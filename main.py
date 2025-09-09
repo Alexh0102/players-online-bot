@@ -66,7 +66,7 @@ class OnlinePlayersView(discord.ui.View):
         view = OnlinePlayersView()
         await interaction.edit_original_response(embed=embed, view=view)
 
-@tasks.loop(minutes=15)
+@tasks.loop(hours=2)
 async def send_online_status():
     if channel_id:
         channel = bot.get_channel(channel_id)
@@ -136,7 +136,7 @@ async def config_canal(ctx):
     """Define este canal para receber mensagens automáticas"""
     global channel_id
     channel_id = ctx.channel.id
-    await ctx.send(f'✅ Canal configurado! Mensagens automáticas serão enviadas aqui a cada 15 minutos.')
+    await ctx.send(f'✅ Canal configurado! Mensagens automáticas serão enviadas aqui a cada 2 horas.')
 
 @bot.command()
 async def enquete(ctx, *, texto=None):
